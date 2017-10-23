@@ -22,12 +22,16 @@
                 <p v-html="rawLink"></p>
                 <hr>
 
-                <a class="btn btn-primary" v-on:click="increaseMe(2)" role="button">click me</a>
+                <a class="btn btn-primary" v-on:click="increaseMe(2,$event)" role="button">click me</a>
 
                 <h3> you clicked {{counter}}/2 times</h3>
                 <hr>
                 <h3>show cordinate</h3>
-                <p v-on:mousemove="updateCordinates">place the cursor to show Cordinates: {{x}}/{{y}}</p>
+                <p v-on:mousemove="updateCordinates">
+                    place the cursor to show Cordinates: {{x}}/{{y}} --
+                    <span v-on:mousemove="stopUpdateCordinate">stop Update</span>
+                    <span v-on:mousemove.stop="">stop Update without function</span>
+                </p>
             </div>
         </div>
     </div>
@@ -49,7 +53,7 @@
                     this.title = 'hello';
                     return this.title;
                 },
-                increaseMe: function(step) {
+                increaseMe: function(step, event) {
                     // this.counter= this.counter + 1;
                     // this.counter++;
                     this.counter += step;
@@ -57,6 +61,9 @@
                 updateCordinates: function(event) {
                     this.x = event.clientX;
                     this.y = event.clientY;
+                },
+                stopUpdateCordinate: function(event) {
+                    event.stopPropagation(); //stop the parent event work like e.preventDefault
                 }
 
             }
