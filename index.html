@@ -23,8 +23,11 @@
                 <hr>
 
                 <a class="btn btn-primary" v-on:click="increaseMe(2,$event)" role="button">click me</a>
+                <a class="btn btn-primary" v-on:click="counter++" role="button">click me</a>
 
                 <h3> you clicked {{counter}}/2 times</h3>
+                <h3> you clicked {{counter+2}} times</h3>
+                <h3> {{counter>12?'counter is greater then 12':'counter is less then 12'}}</h3>
                 <hr>
                 <h3>show cordinate</h3>
                 <p v-on:mousemove="updateCordinates">
