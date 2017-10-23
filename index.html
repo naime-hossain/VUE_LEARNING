@@ -32,6 +32,14 @@
                     <span v-on:mousemove="stopUpdateCordinate">stop Update</span>
                     <span v-on:mousemove.stop="">stop Update without function</span>
                 </p>
+                <hr>
+                <h3>key event</h3>
+
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input v-on:keyup.enter.space.esc="alertMe" type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                </div>
+
             </div>
         </div>
     </div>
@@ -64,6 +72,9 @@
                 },
                 stopUpdateCordinate: function(event) {
                     event.stopPropagation(); //stop the parent event work like e.preventDefault
+                },
+                alertMe: function() {
+                    alert('its time to submit');
                 }
 
             }
