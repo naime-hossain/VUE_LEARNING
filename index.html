@@ -22,9 +22,9 @@
                 <p v-html="rawLink"></p>
                 <hr>
 
-                <a class="btn btn-primary" v-on:click="increaseMe" role="button">click me</a>
+                <a class="btn btn-primary" v-on:click="increaseMe(2)" role="button">click me</a>
 
-                <h3> you clicked {{counter}}</h3>
+                <h3> you clicked {{counter}}/2 times</h3>
                 <hr>
                 <h3>show cordinate</h3>
                 <p v-on:mousemove="updateCordinates">place the cursor to show Cordinates: {{x}}/{{y}}</p>
@@ -49,8 +49,10 @@
                     this.title = 'hello';
                     return this.title;
                 },
-                increaseMe: function() {
-                    this.counter = this.counter + 1;
+                increaseMe: function(step) {
+                    // this.counter= this.counter + 1;
+                    // this.counter++;
+                    this.counter += step;
                 },
                 updateCordinates: function(event) {
                     this.x = event.clientX;
