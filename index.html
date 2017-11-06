@@ -23,11 +23,13 @@
                 <hr>
 
                 <a class="btn btn-primary" v-on:click="increaseMe(2,$event)" role="button">click me</a>
-                <a class="btn btn-primary" v-on:click="counter++" role="button">click me</a>
+                <a class="btn btn-primary" v-on:click="counter++" role="button">Increase</a>
+                <a class="btn btn-primary" v-on:click="counter--" role="button">decrease</a>
 
                 <h3> you clicked {{counter}}/2 times</h3>
                 <h3> you clicked {{counter+2}} times</h3>
                 <h3> {{counter>12?'counter is greater then 12':'counter is less then 12'}}</h3>
+                <h3>computed counter:{{newResult}}</h3>
                 <hr>
                 <h3>show cordinate</h3>
                 <p v-on:mousemove="updateCordinates">
@@ -38,10 +40,12 @@
                 <hr>
                 <h3>key event</h3>
 
+
                 <div class="input-group">
                     <div class="input-group-addon">$</div>
-                    <input v-on:keyup.enter.space.esc="alertMe" type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                    <input v-on:keyup.enter.space.esc="alertMe" type="text" v-model="data2" class="form-control" id="exampleInputAmount" placeholder="Amount">
                 </div>
+                <p>{{data2}}</p>
 
             </div>
         </div>
@@ -58,6 +62,7 @@
                 counter: 0,
                 x: 0,
                 y: 0,
+                data2: '',
             },
             methods: {
                 sayHello: function() {
@@ -80,6 +85,19 @@
                     alert('its time to submit');
                 }
 
+            },
+            computed: {
+                newResult: function() {
+                    return this.counter > 5 ? 'counter is greater than 5' : 'counter is smaller than 5';
+                }
+            },
+            watch: {
+                counter: function() {
+                    var vm = this;
+                    setTimeout(function() {
+                        this.counter = 0;
+                    }, 2000);
+                }
             }
 
         })
