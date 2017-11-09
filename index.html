@@ -59,6 +59,10 @@
                     <div class=" col demo" @click="Addcss=!Addcss" :class="{green:Addcss}"></div>
                     <div class=" col demo" @click="Addcss=!Addcss" :class="{blue:Addcss}"></div>
                     <div class=" col demo" @click="Addcss=!Addcss" :class="{yellow:Addcss}"></div>
+                    <div class=" col demo" @click="Addcss=!Addcss" :class="toggleClass"></div>
+                    <hr> <br>
+                    <div class=" col demo" @click="Addcss=!Addcss" :class="[color,{red:Addcss}]"></div>
+                    <input type="text" name="" id="" v-model="color">
                 </div>
 
             </div>
@@ -78,6 +82,7 @@
                 y: 0,
                 data2: '',
                 Addcss: false,
+                color: 'green'
             },
             methods: {
                 sayHello: function() {
@@ -119,6 +124,14 @@
                     setTimeout(function() {
                         vm.counter = 0;
                     }, 2000);
+                }
+            },
+            computed: {
+                toggleClass: function() {
+                    return {
+                        red: this.Addcss,
+                        blue: !this.Addcss,
+                    }
                 }
             },
 
