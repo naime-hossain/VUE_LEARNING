@@ -62,8 +62,12 @@
                     <div class=" col demo" @click="Addcss=!Addcss" :class="toggleClass"></div>
                     <hr> <br>
                     <div class=" col demo" @click="Addcss=!Addcss" :class="[color,{red:Addcss}]"></div>
-                    <input type="text" name="" id="" v-model="color">
+                    <div class=" col demo" @click="Addcss=!Addcss" :style="{backgroundColor:color}"></div>
+                    <div class=" col demo" @click="Addcss=!Addcss" :style="MyStyle"></div>
+
                 </div>
+                <input type="text" name="" id="" v-model="color">
+                <input type="text" name="" id="" v-model="width">
 
             </div>
         </div>
@@ -82,7 +86,8 @@
                 y: 0,
                 data2: '',
                 Addcss: false,
-                color: 'green'
+                color: 'green',
+                width: 200,
             },
             methods: {
                 sayHello: function() {
@@ -116,6 +121,18 @@
             computed: {
                 newResult: function() {
                     return this.counter > 5 ? 'counter is greater than 5' : 'counter is smaller than 5';
+                },
+                toggleClass: function() {
+                    return {
+                        red: this.Addcss,
+                        blue: !this.Addcss,
+                    }
+                },
+                MyStyle: function() {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + 'px',
+                    }
                 }
             },
             watch: {
@@ -126,14 +143,7 @@
                     }, 2000);
                 }
             },
-            computed: {
-                toggleClass: function() {
-                    return {
-                        red: this.Addcss,
-                        blue: !this.Addcss,
-                    }
-                }
-            },
+
 
         })
     </script>
