@@ -18,6 +18,11 @@
                 <p v-if="show">you can see me</p>
                 <p v-else>now you see me </p>
                 <p>can you ses me?</p>
+                <template v-if="show">
+                    <h2>Template dont render by dom but group all the element inside this</h2>
+                    <p>this is helpful when we want to use v-if same condition in different element</p>
+                </template>
+                <h1 v-else>template is remove</h1>
 
                 <button @click="show= !show" type="button" class="btn btn-large btn-block btn-primary">Swicth</button>
 
