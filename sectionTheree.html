@@ -23,6 +23,8 @@
                     <p>this is helpful when we want to use v-if same condition in different element</p>
                 </template>
                 <h1 v-else>template is remove</h1>
+                <h1>v-show works as v-if but it dont remove the elemnt ,its just disply hide the element</h1>
+                <p v-show="show">this element will get the display none css style</p>
 
                 <button @click="show= !show" type="button" class="btn btn-large btn-block btn-primary">Swicth</button>
 
