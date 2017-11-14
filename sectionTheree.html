@@ -27,7 +27,10 @@
                 <p v-show="show">this element will get the display none css style</p>
 
                 <button @click="show= !show" type="button" class="btn btn-large btn-block btn-primary">Swicth</button>
-
+                <h1>show lists using v-for</h1>
+                <ul>
+                    <li v-for="ingredient in ingredients">{{ingredient}}</li>
+                </ul>
             </div>
 
         </div>
@@ -39,6 +42,16 @@
             el: "#app",
             data: {
                 show: true,
+                ingredients: ['fruits', 'mangoo', 'banana'],
+                persons: [{
+                    name: 'naime',
+                    age: 20,
+                    work: 'salve'
+                }, {
+                    name: 'max',
+                    age: 30,
+                    work: 'teacher'
+                }],
             },
 
 
