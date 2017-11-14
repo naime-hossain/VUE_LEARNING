@@ -48,8 +48,16 @@
                     <li v-for="n  in 10">{{n}}</li>
                 </ul>
                 <hr>
+                <hr>
+                <h1>keep tracking of element when using v-for using key</h1>
+                <ul>
+                    <li v-for="(ingredient,index) in ingredients">{{ingredient}} ({{index}})</li>
+                </ul>
+
+                <button type="button" @click="ingredients.push('spicy')" class="btn btn-large btn-block btn-success">add ingredient</button>
             </div>
-            <hr>
+
+
 
         </div>
     </div>
