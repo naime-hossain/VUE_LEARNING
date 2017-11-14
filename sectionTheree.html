@@ -31,6 +31,11 @@
                 <ul>
                     <li v-for="(ingredient,i) in ingredients">{{ingredient}}({{i}})</li>
                 </ul>
+                <h1>v-for in template or div to show multiple nested item</h1>
+                <template v-for="(ingredient,index) in ingredients">
+                    <h3>{{ingredient}}</h3>
+                    <p>{{index}}</p>
+                </template>
             </div>
 
         </div>
