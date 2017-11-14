@@ -29,7 +29,7 @@
                 <button @click="show= !show" type="button" class="btn btn-large btn-block btn-primary">Swicth</button>
                 <h1>show lists using v-for</h1>
                 <ul>
-                    <li v-for="ingredient in ingredients">{{ingredient}}</li>
+                    <li v-for="(ingredient,i) in ingredients">{{ingredient}}({{i}})</li>
                 </ul>
             </div>
 
