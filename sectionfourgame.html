@@ -102,6 +102,7 @@
                     this.myLife = this.myLife - Math.floor(Math.random() * 5);
                     this.myLife = this.myLife + Math.floor((Math.random() * 5) + 2);
                     this.myLife < 0 ? this.startGame = true : '';
+                    this.myLife >= 100 ? this.myLife = 100 : '';
                     this.monstarLife < 0 ? this.startGame = true : '';
                 }
             },
