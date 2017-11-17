@@ -17,12 +17,12 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <div v-if="monstarLife<0" class="alert bg-success">
+                    <div v-if="meWin" class="alert bg-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <strong>Hurrah</strong> You won
                     </div>
 
-                    <div v-if="myLife<0" class="alert bg-warning">
+                    <div v-if="monstarWin" class="alert bg-warning">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <strong>Alas</strong> You Loss
                     </div>
@@ -78,33 +78,51 @@
                 startGame: true,
                 myLife: 100,
                 monstarLife: 100,
+                monstarWin: false,
+                meWin: false
             },
             methods: {
                 newGame: function() {
                     this.startGame = !this.startGame;
                     this.myLife = 100;
                     this.monstarLife = 100;
+                    this.meWin = false;
+                    this.monstarWin = false;
+                },
+                checkWin: function() {
+                    if (this.myLife <= 0) {
+                        this.startGame = true;
+                        this.monstarWin = true;
+                        // this.newGame();
+
+                    }
+                    if (this.monstarLife <= 0) {
+                        this.startGame = true;
+                        this.meWin = true;
+                        // this.newGame();
+
+                    }
                 },
                 attackMonstar: function() {
-                    this.monstarLife = this.monstarLife - Math.floor((Math.random() * 10) + 2);
-                    this.myLife = this.myLife - Math.floor((Math.random() * 5) + 1);
-                    this.myLife < 0 ? this.startGame = true : '';
-                    this.monstarLife < 0 ? this.startGame = true : '';
+                    this.monstarLife = this.monstarLife - Math.floor((Math.random() * 10) + 1);
+                    this.myLife = this.myLife - Math.floor((Math.random() * 10) + 1);
+                    this.checkWin();
                 },
                 specialMonstar: function() {
                     this.monstarLife = this.monstarLife - Math.floor((Math.random() * 10) + 5);
                     this.myLife = this.myLife - Math.floor((Math.random() * 5) + 1);
-                    this.myLife < 0 ? this.startGame = true : '';
-                    this.monstarLife < 0 ? this.startGame = true : '';
+                    this.checkWin();
                 },
                 healmylife: function() {
 
                     this.myLife = this.myLife - Math.floor(Math.random() * 5);
                     this.myLife = this.myLife + Math.floor((Math.random() * 5) + 2);
-                    this.myLife < 0 ? this.startGame = true : '';
+
                     this.myLife >= 100 ? this.myLife = 100 : '';
-                    this.monstarLife < 0 ? this.startGame = true : '';
-                }
+                    this.checkWin();
+
+                },
+
             },
             computed: {
                 myWidth: function() {
