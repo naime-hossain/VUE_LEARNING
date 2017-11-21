@@ -45,14 +45,13 @@
 
     <script type="text/javascript" src="vue.js"></script>
     <script type="text/javascript">
+        var data = {
+            title: 'This is First Title',
+            showParagraph: false,
+        }
         var vm1 = new Vue({
             el: "#app1",
-            data: {
-                title: 'This is First Title',
-                showParagraph: false,
-
-
-            },
+            data: data,
             methods: {
                 changeTitle: function() {
                     this.title = 'Title is changed by On click event';
@@ -72,6 +71,11 @@
 
 
         });
+
+        setTimeout(function() {
+            vm1.title = 'this is changed by timer using javascript outside instance';
+
+        }, 3000);
 
         var vm2 = new Vue({
             el: "#app2",
