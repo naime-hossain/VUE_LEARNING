@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <title>vue js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="app">
+                <h2>{{title}}</h2>
+
+                <button @click="showParagraph=!showParagraph" type="button" class="btn btn-large btn-block btn-info">
+                    Show The Paragraph
+                </button>
+                <p v-if="showParagraph">This this Not Always visible</p>
+
+
+                <a @click="changeTitle" class="btn btn-success">Change the title</a>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                title: 'This is First Title',
+                showParagraph: false,
+
+
+            },
+            methods: {
+                changeTitle: function() {
+                    this.title = 'Title is changed by On click event';
+                }
+
+            },
+
+            computed: {
+
+
+            },
+            watch: {
+                title: function() {
+                    console.log('title is changed');
+                }
+            },
+
+
+        });
+    </script>
+</body>
+
+</html>
