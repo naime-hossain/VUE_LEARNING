@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div id="app">
+            <div id="app1" class="col">
                 <h2>{{title}}</h2>
 
                 <button @click="showParagraph=!showParagraph" type="button" class="btn btn-large btn-block btn-info">
@@ -27,14 +27,26 @@
 
 
             </div>
+            <div id="app2" class="col">
+                <h2>{{title}}</h2>
+
+                <button @click="changeFirsttitle" type="button" class="btn btn-large btn-block btn-info">
+                    Change the First title
+                </button>
+
+                <a @click="changeTitle" class="btn btn-success">Change the title</a>
+
+
+
+            </div>
         </div>
 
     </div>
 
     <script type="text/javascript" src="vue.js"></script>
     <script type="text/javascript">
-        new Vue({
-            el: "#app",
+        var vm1 = new Vue({
+            el: "#app1",
             data: {
                 title: 'This is First Title',
                 showParagraph: false,
@@ -44,6 +56,37 @@
             methods: {
                 changeTitle: function() {
                     this.title = 'Title is changed by On click event';
+                }
+
+            },
+
+            computed: {
+
+
+            },
+            watch: {
+                title: function() {
+                    console.log('title is changed');
+                }
+            },
+
+
+        });
+
+        var vm2 = new Vue({
+            el: "#app2",
+            data: {
+                title: 'This is second Title',
+                showParagraph: false,
+
+
+            },
+            methods: {
+                changeTitle: function() {
+                    this.title = 'Title is changed by On click event';
+                },
+                changeFirsttitle: function() {
+                    vm1.title = "this is changed by another Vue instance";
                 }
 
             },
