@@ -16,7 +16,7 @@
             <div id="app1" class="col">
                 <h2>{{title}}</h2>
 
-                <button @click="showParagraph=!showParagraph" type="button" class="btn btn-large btn-block btn-info">
+                <button @click="showParagraph=!showParagraph" type="button" ref="editButton" class="btn btn-large btn-block btn-info">
                     Show The Paragraph
                 </button>
                 <p v-if="showParagraph">This this Not Always visible</p>
@@ -39,6 +39,9 @@
 
 
             </div>
+            <div class="col" id="app3">
+
+            </div>
         </div>
 
     </div>
@@ -50,11 +53,12 @@
             showParagraph: false,
         }
         var vm1 = new Vue({
-            el: "#app1",
+            // el: "#app1",
             data: data,
             methods: {
                 changeTitle: function() {
                     this.title = 'Title is changed by On click event';
+                    this.$refs.editButton.innerText = 'this is changed';
                 }
 
             },
@@ -72,6 +76,7 @@
 
         });
 
+        vm1.$mount('#app1');
         setTimeout(function() {
             vm1.title = 'this is changed by timer using javascript outside instance';
 
@@ -107,6 +112,12 @@
 
 
         });
+
+        var vm3 = new Vue({
+            template: "<h2>hello world</h2>",
+
+        });
+        vm3.$mount('#app3');
     </script>
 </body>
 
