@@ -35,7 +35,8 @@
                 </button>
 
                 <a @click="changeTitle" class="btn btn-success">Change the title</a>
-
+                <hello></hello>
+                <hello></hello>
 
 
             </div>
@@ -81,6 +82,10 @@
             vm1.title = 'this is changed by timer using javascript outside instance';
 
         }, 3000);
+        // create new vue component
+        Vue.component('hello', function() {
+            template: "<h2>hello from Vue component</h2>",
+        });
 
         var vm2 = new Vue({
             el: "#app2",
