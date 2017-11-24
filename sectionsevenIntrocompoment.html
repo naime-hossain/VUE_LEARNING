@@ -19,6 +19,18 @@
                 <hr>
                 <my-comp></my-comp>
             </div>
+            <div id="app2">
+                <my-comp></my-comp>
+                <hr>
+                <hr>
+                <my-comp></my-comp>
+            </div>
+            <div id="app3">
+                <my-comp></my-comp>
+                <hr>
+                <hr>
+                <my-comp></my-comp>
+            </div>
 
         </div>
 
@@ -26,15 +38,16 @@
 
     <script type="text/javascript" src="vue.js"></script>
     <script type="text/javascript">
-        var data = {
-            name: 'naime hossain'
-        }
+        // var data = {
+        //         name: 'naime hossain'
+        //     }
+        // global component
         Vue.component('my-comp', {
             data: function() {
-                // return {
-                //     name: 'Naime Hossain'
-                // }
-                return data;
+                return {
+                    name: 'Naime Hossain'
+                }
+                // return data;
             },
             template: '<p>{{name}} <button @click="changeName">changeName</button></p>',
             methods: {
@@ -43,23 +56,49 @@
                 }
             }
         });
+
+        // local component
+        var comp = {
+            data: function() {
+                return {
+                    name: 'Sakib Hosain'
+                }
+                // return data;
+            },
+            template: '<p>{{name}} <button @click="changeName">changeName</button></p>',
+            methods: {
+                changeName: function() {
+                    this.name = 'hossain bhuiyan';
+                }
+            }
+        };
         new Vue({
             el: "#app",
             data: {
 
             },
-            methods: {
 
 
-            },
 
-            computed: {
-
-
-            },
-            watch: {
+        });
+        new Vue({
+            el: "#app2",
+            data: {
 
             },
+
+
+
+        });
+        new Vue({
+            el: "#app3",
+            data: {
+
+            },
+            components: {
+                'my-comp': comp
+            }
+
 
 
         });
