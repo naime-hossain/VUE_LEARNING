@@ -26,13 +26,22 @@
 
     <script type="text/javascript" src="vue.js"></script>
     <script type="text/javascript">
+        var data = {
+            name: 'naime hossain'
+        }
         Vue.component('my-comp', {
             data: function() {
-                return {
-                    name: 'Naime Hossain'
-                }
+                // return {
+                //     name: 'Naime Hossain'
+                // }
+                return data;
             },
-            template: "<h2>My name is {{name}}</h2>"
+            template: '<p>{{name}} <button @click="changeName">changeName</button></p>',
+            methods: {
+                changeName: function() {
+                    this.name = 'hossain bhuiyan';
+                }
+            }
         });
         new Vue({
             el: "#app",
