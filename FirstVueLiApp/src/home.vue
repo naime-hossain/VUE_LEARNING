@@ -1,21 +1,13 @@
 <template>
    <div class="col">
-       <p>Hello Mr./Mrs {{name}}</p>
-       <hr>
-       <button @click="knowTheStranger">Know the name</button>
+       <showName :key='Name' v-for="Name in 5"></showName>
    </div>
 </template>
 <script>
+import AllName from './AllName.vue';
 export default {
-    data:function () {
-    return {
-      name: 'unkmown'
-    }
-  },
-       methods:{
-           knowTheStranger(){
-               this.name='Naime Hossain'
-           }
-       }
+components: {
+    'showName':AllName
+}
 }
 </script>
