@@ -12,7 +12,10 @@
 
 export default {
 
-   props:['name'],
+  //  props:['name'],
+  props:{
+    name:String
+  },
    methods:{
      switchName(){
         this.name=this.name.split('').reverse().join('');

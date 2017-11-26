@@ -22,7 +22,7 @@ export default {
     return {
       show:false,
 
-      name:'Naime Hossain'
+      name:'Naime Hossain',
     }
   },
   components: {
