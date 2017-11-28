@@ -2,13 +2,19 @@
 <div class="wrap">
     <h1>This is User Component</h1>
     <p>I am an awesome user</p>
+    <p>Age is {{age}}</p>
     <button @click="changeMyName">Change my name</button>
     <hr>
 <div class="col-md-6">
-    <user-details :name="name"></user-details>
+    <user-details 
+    :name="name" 
+    @nameWasChanged="name= $event" 
+    :resetbyParent="resetFn"
+    :myAge="age"></user-details>
    </div>
    <div class="col-md-6">
-       <user-edit></user-edit>
+       <user-edit :myAge="age"
+       @agewasChanged="age=$event"></user-edit>
    </div>
 </div>
    
@@ -23,6 +29,7 @@ export default {
       show:false,
 
       name:'Naime Hossain',
+      age:24,
     }
   },
   components: {
@@ -32,6 +39,9 @@ export default {
   methods:{
       changeMyName(){
           this.name='md.naime hossain'
+      },
+      resetFn(){
+            this.name='Naime Bhuiyan';
       }
   }
    
